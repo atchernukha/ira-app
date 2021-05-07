@@ -1,16 +1,56 @@
-@import url('https://https://fonts.google.com/specimen/Open+Sans&display=swap');
+@import url('https://fonts.google.com/specimen/Open+Sans&display=swap');
+
+/* $minWidth: 320px; */
 
 .grid-container {
+  max-width: 1440px;
   display: grid;
-  grid-template-areas: "header" "main";
+  grid-template-areas: "header" "content";
   grid-template-columns: 1fr;
-  grid-template-rows: 5rem 1fr 5rem;
-  height: 100%;
-}
+  grid-template-rows: 5rem 1fr;
+  }
 
 .header {
+  height: 80px;
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  background-color: aqua;
+}
+
+.header nav {
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.header nav li {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.checkList {
+  display: flex;
+  align-items: center;
+  background-color: rgb(223, 208, 160);
+  float: left;
+  width: 270px;
+}
+
+.content{
+  grid-area: content;
+  display: flex;
+  align-items: center;
+  background-color: rgb(134, 156, 152);
+  min-height: 600px;
 }
 
 .main {
   display: flex;
+  align-items: center;
+  background-color: rgb(223, 160, 160);
+  float: left;
 }
+
