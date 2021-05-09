@@ -15,7 +15,7 @@
   grid-area: header;
   display: flex;
   align-items: center;
-  background-color: aqua;
+  border-bottom: 0.1rem #6d5c5c solid;
 }
 
 .header nav {
@@ -33,17 +33,16 @@
 
 .checkList {
   display: flex;
-  align-items: center;
-  background-color: rgb(223, 208, 160);
   float: left;
   width: 270px;
+  border-right: 0.1rem #6d5c5c solid;
 }
 
 .content{
   grid-area: content;
   display: flex;
   align-items: center;
-  background-color: rgb(134, 156, 152);
+  background-color: rgb(218, 245, 240);
   min-height: 600px;
 }
 
