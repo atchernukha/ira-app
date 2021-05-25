@@ -1,0 +1,52 @@
+
+.stepContainer {
+        flex: 1;
+}
+
+.pointContainer {
+    --primary-color: #2f80ed;
+    --secondary-color: #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.point {
+        min-width: 36px;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        /* background-color: #2f80ed; */
+        background-color: var(--secondary-color);
+        border: thick double var(--secondary-color);
+    }
+
+.pre {
+        height: 1px;
+        width: 100%;
+        margin-top: 18px;
+        background-color: var(--secondary-color);
+    }
+.post {
+        height: 1px;
+        width: 100%;
+        margin-top: 18px;
+        background-color: var(--secondary-color);
+    }
+.done {
+        background-color: var(--primary-color);
+        
+}
+.inactive {
+        background-color: var(--secondary-color);    
+}
+.current{
+        border: thick double var(--primary-color);
+}
+.hide {
+        visibility: hidden;
+   }
+.stepLabel {
+        height: 1rem;
+        min-width: 260px;
+        text-align: center;
+    }
