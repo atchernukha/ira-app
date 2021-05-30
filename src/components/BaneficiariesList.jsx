@@ -1,7 +1,10 @@
-import React from 'react'
-import Beneficiary from './Beneficiary'
+import React from 'react';
+import Beneficiary from './Beneficiary';
+import './BeneficiaryList.css';
+
 
 const styles = {
+    padding: '2em',
     ul: {
         listStyleType: 'none',
         margin: 0,
@@ -10,28 +13,32 @@ const styles = {
 }
 
 export default function BeneficiariesList(props) {
+    const nextCheck = props.nextCheck;
     return (
-        <div className="main">
-            <p>
-            <h2>BENEFICIARIES</h2>
-            <br/>
+        <div style={styles}>
+
+            <h3>BENEFICIARIES</h3>
+            <br />
             <h3>Primary Beneficiaries</h3>
-            <br/>
+            <br />
             <ul style={styles.ul}>
                 {props.beneficiaries.map(
-                    item => (<li><Beneficiary key={item.id} beneficiary={item}/></li>)
+                    item => (<li><Beneficiary key={item.id} beneficiary={item} /></li>)
                 )}
             </ul>
-            <br/>
+            <br />
             <div>Primary Total: 50%</div>
-            <br/>
-            <label>
+            <br />
+            <label className="switch">
                 Confingent Beneficiaies
-                <button type="radio"></button>
+                    <input type="checkbox" />
+                <span className="slider round"></span>
             </label>
-            <br/>
-            <button>Next</button>
-            </p>
-            </div>
+            <br />
+            <br />
+            <br />
+            <button onClick={() => nextCheck()}>Next</button>
+
+        </div>
     )
 }
