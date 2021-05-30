@@ -1,8 +1,57 @@
 import React from 'react';import check from '../icons/check2.svg';
+// import './Steps.css';
 
 
-// const    primaryColor = '#2f80ed';
-// const     secondaryColor = '#e0e0e0';
+const primaryColor = '#2f80ed';
+const secondaryColor = '#e0e0e0';
+const stepStyle = {
+stepContainer: {
+        flex: '1'
+},
+pointContainer: {
+    primaryColor: '#2f80ed',
+    secondaryColor: '#e0e0e0',
+    display: 'flex',
+    justifyContent: 'space-between'
+},
+point: {
+        minWidth: '36px',
+        width: '36px',
+        height: '36px',
+        borderRadius: '50%',
+        backgroundColor: secondaryColor,
+
+    },
+pre: {
+        height: '1px',
+        width: '100%',
+        marginTop: '18px',
+        backgroundColor: secondaryColor
+    },
+post: {
+        height: '1px',
+        width: '100%',
+        marginTop: '18px',
+        backgroundColor: secondaryColor
+    },
+done: {
+        backgroundColor: primaryColor
+},
+inactive: {
+        backgroundColor: secondaryColor
+},
+current: {
+        border: 'thick double '+primaryColor
+},
+hide: {
+        visibility: 'hidden'
+   },
+stepLabel: {
+        height: '1rem',
+        minWidth: '260px',
+        textAlign: 'center'
+    }
+}
 
 export default function Step(props) {
     const stepLabel = props.stepLabel;
@@ -16,6 +65,7 @@ export default function Step(props) {
         case "current":
             pre += " done";
             post += " inactive";
+            // Object.assign(stepStyle.point, stepStyle.current);
             point += " current";
             break;
         case "done":
@@ -32,15 +82,17 @@ export default function Step(props) {
     (firstStep)&&(pre += ' hide');
     (lastStep)&&(post += ' hide');
     return (
-        <div className="stepContainer">
-            <div className="pointContainer">
-                <div className={pre}></div>
-                <div className={point}>
+        <li>
+        <div style={stepStyle.stepContainer}>
+            <div style={stepStyle.pointContainer}>
+                <div style={stepStyle.pre}></div>
+                <div style={stepStyle.point}>
                 <img src={check}  alt="check"/>
                 </div>
-                <div className={post} ></div>
+                <div style={stepStyle.post} ></div>
             </div>
-            <div className="stepLabel">{stepLabel}</div>
+            <div style={stepStyle.stepLabel}>{stepLabel}</div>
         </div>
+        </li>
     )
 }

@@ -15,9 +15,11 @@
         width: 36px;
         height: 36px;
         border-radius: 50%;
+        font-size: 26px;
+        color: #998b8b;
         /* background-color: #2f80ed; */
         background-color: var(--secondary-color);
-        border: thick double var(--secondary-color);
+        border: thick double #998b8b;
     }
 
 .pre {
@@ -34,13 +36,14 @@
     }
 .done {
         background-color: var(--primary-color);
-        
+        color: #e0e0e0;        
 }
 .inactive {
-        background-color: var(--secondary-color);    
+        background-color: var(--secondary-color);
 }
 .current{
         border: thick double var(--primary-color);
+        color: #2f80ed;
 }
 .hide {
         visibility: hidden;

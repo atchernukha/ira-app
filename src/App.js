@@ -6,12 +6,15 @@ import StepsContent from "./components/StepsContent";
 const stepList = [
   {
     stepLabel: "IRA Application",
+    stepIcon: "uil uil-file-copy-alt",
   },
   {
     stepLabel: "Risk Assessment",
+    stepIcon: "uil uil-abacus",
   },
   {
     stepLabel: "Upload ID",
+    stepIcon: "uil uil-scenery",
   }
 ];
 
@@ -23,8 +26,6 @@ function App() {
     stepList[0].status = "current";
     return 0;
   });
-  console.log(currentStep);
-
   
   const nextStep = () => {
     let index = stepList.findIndex(item => item.status === "current");
@@ -44,7 +45,7 @@ function App() {
     <div className="grid-container">
       <Header stepList={stepList}></Header>
       <div>
-          <StepsContent currentStep={currentStep}/>        
+          <StepsContent currentStep={currentStep} nextStep={nextStep}/>        
           <button onClick={()=>nextStep()}>NexStep</button>
       </div>  
     </div>

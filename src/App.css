@@ -1,5 +1,7 @@
 @import url('https://fonts.google.com/specimen/Open+Sans&display=swap');
 
+
+
 /* $minWidth: 320px; */
 
 .grid-container {
@@ -16,14 +18,14 @@
   grid-area: header;
   display: flex;
   align-items: center;
-  border-bottom: 0.1rem #6290c5 solid;
+  border-bottom: 0.1rem #e0e0e0 solid;
 }
 
 .checkList {
   display: flex;
   float: left;
   width: 270px;
-  border-right: 0.1rem #6d5c5c solid;
+  /* border-right: 0.1rem #e0e0e0 solid; */
 }
 
 .content{
