@@ -41,10 +41,11 @@ export default function StepsContent(props) {
       });
         const stepsStyles = {
             ul: {
-                listStyle: 'none'
+                listStyle: 'none',
+                // display: 'flex',
+                // gap: "2em",
             },
             stepsContainer: {
-                display: 'flex',
                 float: 'left',
                 width: '270px',
                 borderRight: '0.1rem #e0e0e0 solid'

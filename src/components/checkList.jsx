@@ -7,7 +7,8 @@ const styles = {
     },
     li: {
         display: 'flex',
-        gap: '0.3em',
+        // gap: '0.3em',
+        gap: "1em",
     },
     point: {
             // min-width: '6px',
