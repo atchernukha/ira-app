@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ira-app/static/css/main.a5bd2db9.chunk.css",
-    "main.js": "/ira-app/static/js/main.c4fc527d.chunk.js",
-    "main.js.map": "/ira-app/static/js/main.c4fc527d.chunk.js.map",
+    "main.js": "/ira-app/static/js/main.6cc579de.chunk.js",
+    "main.js.map": "/ira-app/static/js/main.6cc579de.chunk.js.map",
     "runtime-main.js": "/ira-app/static/js/runtime-main.4c3b251f.js",
     "runtime-main.js.map": "/ira-app/static/js/runtime-main.4c3b251f.js.map",
     "static/js/2.6a3ae2ca.chunk.js": "/ira-app/static/js/2.6a3ae2ca.chunk.js",
@@ -12,12 +12,13 @@
     "index.html": "/ira-app/index.html",
     "static/css/main.a5bd2db9.chunk.css.map": "/ira-app/static/css/main.a5bd2db9.chunk.css.map",
     "static/js/2.6a3ae2ca.chunk.js.LICENSE.txt": "/ira-app/static/js/2.6a3ae2ca.chunk.js.LICENSE.txt",
+    "static/media/IRA_logo.b14a3041.svg": "/ira-app/static/media/IRA_logo.b14a3041.svg",
     "static/media/check2.74b1a50e.svg": "/ira-app/static/media/check2.74b1a50e.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.4c3b251f.js",
     "static/js/2.6a3ae2ca.chunk.js",
     "static/css/main.a5bd2db9.chunk.css",
-    "static/js/main.c4fc527d.chunk.js"
+    "static/js/main.6cc579de.chunk.js"
   ]
 }
