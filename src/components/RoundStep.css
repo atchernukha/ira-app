@@ -17,10 +17,14 @@
         border-radius: 50%;
         font-size: 26px;
         color: #998b8b;
-        /* background-color: #2f80ed; */
+        text-align: center;
         background-color: var(--secondary-color);
-        border: thick double #998b8b;
+        border: thick double #e0e0e0;
     }
+
+.point i {
+        vertical-align: middle;
+    }  
 
 .pre {
         height: 1px;

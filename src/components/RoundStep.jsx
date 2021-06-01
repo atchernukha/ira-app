@@ -1,6 +1,5 @@
 
 import React from 'react';
-import check from '../icons/check2.svg';
 import './RoundStep.css';
 
 
@@ -39,8 +38,6 @@ export default function RoundStep(props) {
                 <div className={pre}></div>
                 <div className={point}>
                 <i className={stepIcon}></i>
-                {/* <i class="uil uil-file-copy-alt"></i> */}
-                {/* <img src={check}  alt="check"/> */}
                 </div>
                 <div className={post} ></div>
             </div>

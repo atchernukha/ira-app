@@ -45,7 +45,7 @@ function App() {
     <div className="grid-container">
       <Header stepList={stepList}></Header>
       <div>
-          <StepsContent currentStep={currentStep} nextStep={nextStep}/>        
+          <StepsContent currentStep={currentStep} onCompleted={nextStep} />        
           <button onClick={()=>nextStep()}>NexStep</button>
       </div>  
     </div>

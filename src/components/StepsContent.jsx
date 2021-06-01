@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-import BeneficiariesList from './BaneficiariesList';
-import CheckList from "./checkList";
 import Steps from './Steps';
 import CheckStep from './CheckStep';
 import CheckContent from './CheckContent';
@@ -29,11 +27,7 @@ const checkList = [
   
 
 export default function StepsContent(props) {
-    const beneficiaries = [
-        { id: 1, fullName: "Tom Cruise", birth: "1980-01-01", ssn: "SSN", optional: "", relationship: "Trust", part: 50, complited: false },
-        { id: 2, fullName: "Elon Musk", birth: "1970-01-01", ssn: "SSN", optional: "", relationship: "Trust", part: 50, complited: false },
-        { id: 3, fullName: "Jeff Bezos", birth: "1965-01-01", ssn: "SSN", optional: "", relationship: "Trust", part: 50, complited: false }
-    ];
+
     const [currentCheck, setcurrentCheck] = useState(() => {
         checkList.forEach(item => item.status = "inactive");
         checkList[0].status = "current";
@@ -92,15 +86,15 @@ export default function StepsContent(props) {
             return (
                 <div className="content">
                 <Steps stepList={checkList} stepsStyles={stepsStyles} step={CheckStep}></Steps> 
-                <CheckContent currentCheck={currentCheck} nextCheck={nextCheck} onCompleted={props}/>                    
+                <CheckContent currentCheck={currentCheck} 
+                              nextCheck={nextCheck} 
+                              onCompleted={props.onCompleted}/>                    
                    </div>                
             )
         case 1:
             return (
                  <div className="content">
                 <h2>Step 2</h2>    
-                {/* <CheckList></CheckList>
-                <BeneficiariesList beneficiaries={beneficiaries} ></BeneficiariesList> */}
                  </div>                
             )
         case 2:
