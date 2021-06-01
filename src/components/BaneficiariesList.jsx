@@ -12,7 +12,6 @@ const styles = {
     },
     formGroup: {
         display: "flex",
-        // flexDirection: "column",
         alignItems: 'flex-end',
         gap: "14px"
     },
@@ -36,7 +35,7 @@ export default function BeneficiariesList(props) {
             <div>Primary Total: 50%</div>
             <br />
             <label style={styles.formGroup}>
-            Confingent Beneficiaies
+            <strong>Confingent Beneficiaies</strong> 
             <label className="switch">
                     <input type="checkbox" />
                 <span className="slider round"></span>
