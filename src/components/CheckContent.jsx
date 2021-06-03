@@ -3,9 +3,9 @@ import BeneficiariesList from './BaneficiariesList'
 
 export default function CheckContent(props) {
     const beneficiaries = [
-        { id: 1, fullName: "Tom Cruise", birth: "1980-01-01", ssn: "SSN", optional: "", relationship: "Trust", part: 50, complited: false },
-        { id: 2, fullName: "Elon Musk", birth: "1970-01-01", ssn: "SSN", optional: "", relationship: "Trust", part: 50, complited: false },
-        { id: 3, fullName: "Jeff Bezos", birth: "1965-01-01", ssn: "SSN", optional: "", relationship: "Trust", part: 50, complited: false }
+        { id: 1, fullName: "Tom Cruise", birth: "1980-01-01", ssn: "SSN", optional: "", relationship: "Trust", part: 40, complited: false },
+        { id: 2, fullName: "Elon Musk", birth: "1970-01-01", ssn: "SSN", optional: "", relationship: "Trust", part: 20, complited: false },
+        { id: 3, fullName: "Jeff Bezos", birth: "1965-01-01", ssn: "SSN", optional: "", relationship: "Trust", part: 30, complited: false }
     ];
     const nextCheck = props.nextCheck;
     const onCompleted= props.onCompleted;

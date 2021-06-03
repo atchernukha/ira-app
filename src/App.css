@@ -28,20 +28,17 @@
   display: flex;
   float: left;
   width: 270px;
-  /* border-right: 0.1rem #e0e0e0 solid; */
 }
 
 .content{
   grid-area: content;
   display: flex;
-  /* background-color: rgb(218, 245, 240); */
   direction: initial;
-  min-height: 600px;
+  min-height: 900px;
 }
 
 .main {
   display: flex;
-  /* background-color: rgb(223, 160, 160); */
   float: left;
 }
 
