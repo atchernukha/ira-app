@@ -6,21 +6,7 @@ const styles = {
         gap: '0.3em',
         fontSize: "18px",
     },
-    done: {
-        color: 'green',
-        // fontSize: "24px",
-    },
-    inactive: {
-        color: '#e0e0e0',
-        // fontSize: "24px",
-    },
-    current: {
-        color: '#2f80ed',
-        // fontSize: "24px",
-    },
-    stepLabel: {
-
-    }
+    stepLabel: {}
 }
 
 export default function CheckStep(props) {
@@ -29,11 +15,10 @@ export default function CheckStep(props) {
 
     return (
         <div >
-            <li style={styles.li}>
-               {(status === "done") && (<i style={styles.done} class="uil uil-check"/>)}
-               {/* {(status === "current") && (<i style={styles.current} class="uil uil-bullseye"/>)} */}
-               {(status === "current") && (<i style={styles.current} class="uil uil-compact-disc"/>)}
-               {(status === "inactive") && (<i style={styles.inactive} class="uil uil-circle"/>)}
+            <li style={{...styles.li,...(status === "current") && {background: '#f3f3f3'}}}>
+               {(status === "done") && (<i style={{color: 'green'}} class="uil uil-check"/>)}
+               {(status === "current") && (<i style={{color: '#2f80ed'}} class="uil uil-compact-disc"/>)}
+               {(status === "inactive") && (<i style={{color: '#c9c4c4'}} class="uil uil-circle"/>)}
                 <div style={styles.stepLabel}>{stepLabel}</div>
             </li>
         </div>

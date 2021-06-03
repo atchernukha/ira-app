@@ -33,14 +33,14 @@ export default function StepsContent(props) {
         checkList[0].status = "current";
         return 0;
       });
-        const stepsStyles = {
+        const checkStyles = {
             ul: {
                 listStyle: 'none',
-                // display: 'flex',
-                // gap: "2em",
+                fontSize: '1.5rem',
+                lineHeight: '2.5',
             },
             stepsContainer: {
-                float: 'left',
+                // float: 'left',
                 width: '270px',
                 borderRight: '0.1rem #e0e0e0 solid'
             }
@@ -56,40 +56,16 @@ export default function StepsContent(props) {
               }
             } 
           };
-        const styles = {
-            ul: {
-                listStyle: 'none',
-            },
-            li: {
-                display: 'flex',
-                gap: '0.3em',
-            },
-            point: {
-                    // min-width: '6px',
-                    width: '14px',
-                    height: '14px',
-                    borderRadius: '50%',
-                    /* background-color: #2f80ed; */
-                    backgroundColor: 'transpurent',
-                    border: 'thin solid grey'
-            },
-            current: {
-                width: '14px',
-                height: '14px',
-                borderRadius: '50%',
-                backgroundColor: '#2f80ed',
-                border: 'thin solid #2f80ed'
-            }
-        }    
+
     switch (props.currentStep) {
         case 0:
             return (
                 <div className="content">
-                <Steps stepList={checkList} stepsStyles={stepsStyles} step={CheckStep}></Steps> 
+                <Steps stepList={checkList} stepsStyles={checkStyles} step={CheckStep}/> 
                 <CheckContent currentCheck={currentCheck} 
                               nextCheck={nextCheck} 
                               onCompleted={props.onCompleted}/>                    
-                   </div>                
+                </div>                
             )
         case 1:
             return (

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const styles = {
-    form: {
+    formItem: {
         display: 'flex',
         alignItems: 'flex-end',
         width: "100%",
@@ -48,7 +48,7 @@ const styles = {
 
 export default function Beneficiary({ beneficiary }) {
     return (
-        <form style={styles.form}>
+        <div style={styles.formItem}>
             <div style={styles.formGroup}>
                 <label type={styles.label}>Full Name</label>
                 <input style={styles.input} type="text" name="fullName" value={beneficiary.fullName} size='20' />
@@ -81,6 +81,6 @@ export default function Beneficiary({ beneficiary }) {
             <button style={styles.submit}>
                 <i class="uil uil-check"></i>
             </button>
-        </form>
+        </div>
     )
 }

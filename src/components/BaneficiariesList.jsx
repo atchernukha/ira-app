@@ -20,7 +20,7 @@ const styles = {
 export default function BeneficiariesList(props) {
     const nextCheck = props.nextCheck;
     return (
-        <div style={styles}>
+        <form style={styles}>
 
             <h3>BENEFICIARIES</h3>
             <br />
@@ -46,6 +46,6 @@ export default function BeneficiariesList(props) {
             <br />
             <button onClick={() => nextCheck()}>Next</button>
 
-        </div>
+        </form>
     )
 }

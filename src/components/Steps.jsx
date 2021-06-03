@@ -1,5 +1,4 @@
 import React from 'react';
-// import RoundStep from './RoundStep';
 
 export default function Steps(props) {
     const stepList = props.stepList;
