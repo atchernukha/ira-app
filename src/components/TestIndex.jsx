@@ -73,6 +73,28 @@ const formStyles = {
     backgroundColor: '#fcecef',
   },
 };
+export const Input = ({ label, register, name, required, ...rest }) => (
+  <div style={styles.formGroup}>
+    <label style={styles.label}>{label}</label>
+    <input  style={styles.input} {...register(name, required )} {...rest} />
+  </div>
+);
+
+
+export const Select = ({ label, register, options, name, required, ...rest }) => (
+  <div style={styles.formGroup}>
+  <label style={styles.label}>{label}</label>
+  <select style={{ ...styles.input, ...styles.select }} 
+                  {...register(name, required )} {...rest}>
+      {options.map(value => (
+        <option key={value} value={value}>
+          {value}
+        </option>
+      ))}
+   </select>
+   </div>
+  );
+
 export default function TestIndex() {
   const { register, setValue, formState: { errors }, control, handleSubmit, watch } = useForm({
     defaultValues: {
@@ -90,13 +112,35 @@ export default function TestIndex() {
   });
   const [primaryTotal, setPrimaryTotal] = useState(0);
   const [addItem, setAddItem] = useState(false);
-  const onCheck = () => setAddItem(true);
+  const onCheck = () => {
+    // setValue(`formItems[${index}].check`, false);
+    setAddItem(true);
+  }
   const onSubmit = data => console.log(data);
   const newItem = () => {
     append({ part: 0 });
     setAddItem(false);
     //    append({part: 0});
   };
+  const Check = ({ control, index, field }) => {
+    const value = useWatch({
+      control,
+      name: "formItems",
+    });
+    return (
+      <Controller
+        control={control}
+        name={`formItems.${index}.check`}
+        render={({ field }) =>
+          value?.[index]?.check === "true" ?               
+          <button style={styles.submit} onClick={setValue(`formItems[${index}].check`, false)}>
+          <i class="uil uil-check"></i>
+          </button> : null
+        }
+        defaultValue={field.check}
+      />
+    );
+  }
   const TotalPercentage = ({ control }) => {
     const value = useWatch({
       control,
@@ -122,47 +166,22 @@ export default function TestIndex() {
         {fields.map((field, index) => {
           return (<div>
             <div key={field.id} style={styles.formItem}>
-
-              <div style={styles.formGroup}>
-                <label type={styles.label}>Full Name</label>
-                <input style={styles.input}
-                  defaultValue={field.fullName}
-                  placeholder="John Doe"
-                  size='20'
-                  {...register(`formItems[${index}].fullName`, { required: true, maxLength: 30 })} />
-              </div>
-              <div style={styles.formGroup}>
-                <label type={styles.label}>Date of Birth</label>
-                <input style={styles.input}
-                  type='date'
-                  defaultValue={field.birth}
-                  {...register(`formItems[${index}].birth`, { required: true })} />
-              </div>
-              <div style={styles.formGroup}>
-                <select style={{ ...styles.input, ...styles.select }}
-                  defaultValue={field.ssn}
-                  {...register(`formItems[${index}].ssn`, { required: true })} >
-                  <option value="SSN">SSN</option>
-                  <option value="INN">INN</option>
-                </select>
-              </div>
-              <div style={styles.formGroup}>
-                <input style={styles.input}
-                  placeholder="optional"
-                  size='5'
-                  defaultValue={field.optional}
-                  {...register(`formItems[${index}].optional`)} />
-              </div>
-              <div style={styles.formGroup}>
-                <label type={styles.label}>Relationship</label>
-                <select style={{ ...styles.input, ...styles.select }}
-                  defaultValue={field.relationship}
-                  {...register(`formItems[${index}].relationship`)}>
-                  <option value="Trust">Trust</option>
-                  <option value="noTrust">noTrust</option>
-                </select>
-              </div>
-              <div style={styles.formGroup}>
+            <Input label="Full Name" register={register} name={`formItems[${index}].fullName`}
+                    required={{ required: true, maxLength: 30 }} defaultValue={field.fullName}  
+                    placeholder="John Doe" />
+            <Input label="Date of Birth" register={register} name={`formItems[${index}].birth`}
+                    required={{ required: true }} defaultValue={field.birth}  
+                    type='date' />                    
+            <Select register={register} name={`formItems[${index}].ssn`}
+                    required={{ required: true }} defaultValue={field.ssn}
+                    options={["SSN", "INN"]} />
+            <Input register={register} name={`formItems[${index}].optional`}
+                    required={{ maxLength: 40 }} defaultValue={field.optional}  
+                    placeholder="optional" size='5' />
+            <Select register={register} name={`formItems[${index}].relationship`}
+                    required={{ required: true }} defaultValue={field.relationship}
+                    label="Relationship" options={["Trust", "noTrust"]} />              
+              
               <Controller
         control={control}
         name={`formItems[${index}].part`}
@@ -171,6 +190,7 @@ export default function TestIndex() {
         render={({ field }) => {
           // sending integer instead of string.
           return (
+            <div style={styles.formGroup}>
             <NumberFormat
               style={{ ...styles.input, ...styles.percentage }}
               size="small"
@@ -196,25 +216,20 @@ export default function TestIndex() {
                 // setValue('percent', percent);
               }}
             />
+            </div>
           );
         }}
       />
-              </div>
+              
               <button type="button" style={styles.remove} onClick={() => remove(index)}>
                 <i class="uil uil-times"></i>
               </button>
-              {field.check && 
-              <div style={styles.formGroup}>
-                <input style={{ ...styles.input, ...styles.check }}
-                  type="checkbox"
-                  defaultChecked = {field.check}
-                  {...register(`formItems[${index}].check`)}
-                />
-              </div>}
+              <Check {...{ control, index, field }} />
               {/* {(!beneficiary.complited)&& */}
+              {field.check && 
               <button style={styles.submit} onClick={onCheck}>
                 <i class="uil uil-check"></i>
-              </button>
+              </button>}
             </div>
             <div style={formStyles.messageRed} >
               {errors?.formItems?.[index]?.fullName?.type === 'required' && <p>Full Name is required</p>}
@@ -240,11 +255,7 @@ export default function TestIndex() {
         </label>
       </label>
       <br />
-      <input type="checkbox" checked {...register("check")} />
-        
-        {/* based on yes selection to display Age Input*/}
-        {/* {watchShowAge && <input type="number" {...register("age", { min: 50 })} />} */}
-      <br />
+            <br />
       {/* <input className="button" type="submit" disabled/>  */}
       <input className="button" type="submit" />
       <br />

@@ -19,7 +19,7 @@ export default function CheckContent(props) {
             return (
                 <div>
                     <h2>Check 1</h2>
-                    {/* <ul >
+                    <ul >
                         {beneficiaries.map(
                             item => (<li><TestForm key={item.id} beneficiary={item} /></li>)
                         )}
@@ -27,7 +27,7 @@ export default function CheckContent(props) {
                     <TestForm beneficiary={{
                         // id: beneficiaries.length+1, 
                         fullName: "", birth: "", ssn: "", 
-                        optional: "", relationship: "", part: 0, complited: false}}  /> */}
+                        optional: "", relationship: "", part: 0, complited: false}}  />
                     <button className="button" onClick={() => nextCheck()}>Next</button>
                 </div>
             )
