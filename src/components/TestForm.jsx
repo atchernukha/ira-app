@@ -1,4 +1,5 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 
 const styles = {
     formItem: {
@@ -44,21 +45,19 @@ const styles = {
     percentage: {
         width: "60px",
     }
-}
+};
 
-export default function Beneficiary({ beneficiary,index, removeBeneficiary, addBeneficiary,  register }) {
-    // const { beneficiary,removeBeneficiary, addBeneficiary,  register } =props;
-    const remove = () => {
-        removeBeneficiary(beneficiary.id);
-    }
-    const check = () => {
-        addBeneficiary(beneficiary);
-    }
+const onSubmitForm = formData => {console.log("FormData: ",formData);}
+
+export default function TestForm({beneficiary}) {
+    const {register,handleSubmit} = useForm();
     return (
-        <div style={styles.formItem}>
+        <form onSubmit={handleSubmit(onSubmitForm)} style={styles.formItem}>
+
             <div style={styles.formGroup}>
                 <label type={styles.label}>Full Name</label>
-                <input style={styles.input} defaultValue={beneficiary.fullName} placeholder="John Doe" size='20' {...register('fullName')} />
+                <input style={styles.input} defaultValue={beneficiary.fullName} placeholder="John Doe" {...register('fullName')} />
+                {/* <input style={styles.input} name="fullName" placeholder="John Doe" value={beneficiary.fullName} size='20' /> */}
             </div>
             <div style={styles.formGroup}>
                 <label type={styles.label}>Date of Birth</label>
@@ -84,18 +83,19 @@ export default function Beneficiary({ beneficiary,index, removeBeneficiary, addB
                 <input style={{...styles.input, ...styles.percentage}} type="number" 
                         defaultValue={beneficiary.part} size='4' {...register('part', { min: 0, max: 100 })} />
             </div>
-            <button style={styles.remove} onClick={remove}>
-                  <i class="uil uil-times"></i>
+            <button style={styles.remove} onClick={()=>{}}>
+            {/* <button style={styles.remove} onClick={remove}> */}
+                <i class="uil uil-times"></i>
             </button>
 
-            {(!beneficiary.complited)&&
+            {/* {(!beneficiary.complited)&&
             <button style={styles.submit} onClick={check}>
                 <i class="uil uil-check"></i>
-            </button>}
+            </button>} */}
         
-            {/* <button type="submit" style={styles.submit} >
+            <button type="submit" style={styles.submit} >
                 <i class="uil uil-check"></i>
-            </button>          */}
-        </div>
+            </button>
+        </form>
     )
 }

@@ -11,7 +11,8 @@ export default function Header(props) {
             display: "flex",
             fontSize: '1.66em',
             alignItems: 'center',
-            gap: '0.5em',
+            // justifyContent: 'center',
+            gap: '0.3em',
         },
         sub: {
             fontSize: '0.83em',
@@ -28,7 +29,7 @@ export default function Header(props) {
         <div className="header">
             <div style={styles.sub}>
                 <label style={styles.logo}>
-                    <img src={logo} alt="check" height="40" width="40" />
+                    <img src={logo} alt="check" height="36" width="36"/>
                     <strong> IRA Application</strong>
                 </label>
                     IRA Accounts provided by Fidelity Investments

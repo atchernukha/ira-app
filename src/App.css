@@ -42,3 +42,22 @@
   float: left;
 }
 
+.button { 
+  border: none;
+  border-radius: 5px;
+  padding: 7px 12px;
+  background: #62b4f8;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+}
+.button:hover { 
+  background: #2196F3;
+} 
+.button:disabled,
+.button[disabled]{
+border: none;
+background-color: #ccc;
+color: #666666;
+}
