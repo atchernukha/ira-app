@@ -46,7 +46,7 @@ function App() {
       <Header stepList={stepList}></Header>
       <div>
           <StepsContent currentStep={currentStep} onCompleted={nextStep} />        
-          <button onClick={()=>nextStep()}>NexStep</button>
+          <button className="button" onClick={()=>nextStep()}>NexStep</button>
       </div>  
     </div>
   );

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import Beneficiary from './Beneficiary';
 import './BeneficiaryList.css';
 
@@ -15,24 +16,60 @@ const styles = {
         alignItems: 'flex-end',
         gap: "14px"
     },
-}
+    next: {},
+    primaryTotal: {
+        color: '#df960e',
+        backgroundColor: '#fcf7e8',
+    },
+    totalGreen: {
+        color: '#18c23d',
+        backgroundColor: '#e5f8e9',
+    },
+    totalRed: {
+        color: '#f35361',
+        backgroundColor: '#fcecef',
+    },
+};
+const onSubmitForm = formData => {console.log("FormData: ",formData);}
 
-export default function BeneficiariesList(props) {
-    const nextCheck = props.nextCheck;
+
+export default function BeneficiariesList({beneficiaries, nextCheck, removeBeneficiary, addBeneficiary}) {
+
+    const {register, handleSubmit} = useForm();
+        
+    const [primaryTotal, setprimaryTotal] = useState(beneficiaries.reduce((acc,cur)=>acc+cur.part,0));
+
+    const checkBeneficiary = () => {addBeneficiary()}; 
+    
+    var k= beneficiaries.length;
+
     return (
-        <form style={styles}>
+        <form style={styles} onSubmit={handleSubmit(onSubmitForm)}>
 
             <h3>BENEFICIARIES</h3>
             <br />
             <h3>Primary Beneficiaries</h3>
             <br />
             <ul style={styles.ul}>
-                {props.beneficiaries.map(
-                    item => (<li><Beneficiary key={item.id} beneficiary={item} /></li>)
+                {beneficiaries.map(
+                    (item,index) => (<li key={item.id}><Beneficiary beneficiary={item} 
+                        index = {index}
+                        removeBeneficiary = {removeBeneficiary} 
+                        checkBeneficiary = {checkBeneficiary} register={register}/></li>)
                 )}
+            {(primaryTotal!==100)&&  
+            <li><Beneficiary beneficiary={{id: beneficiaries.length, fullName: "", birth: "", ssn: "", 
+                        optional: "", relationship: "", part: 0, complited: false}} 
+                        removeBeneficiary = {removeBeneficiary} 
+                        addBeneficiary = {addBeneficiary} register={register}/>
+            </li>}
+
             </ul>
             <br />
-            <div>Primary Total: 50%</div>
+            <div style={{...styles.primaryTotal,
+                         ...(100<primaryTotal)&&styles.totalRed,
+                         ...(100===primaryTotal)&&(styles.totalGreen)}}>
+                            Primary Total: {primaryTotal}%</div>
             <br />
             <label style={styles.formGroup}>
             <strong>Confingent Beneficiaies</strong> 
@@ -44,7 +81,7 @@ export default function BeneficiariesList(props) {
             <br />
             <br />
             <br />
-            <button onClick={() => nextCheck()}>Next</button>
+            <button className="button" style={styles.next} onClick={() => nextCheck()}>Next</button>
 
         </form>
     )

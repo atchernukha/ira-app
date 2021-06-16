@@ -38,6 +38,7 @@ export default function StepsContent(props) {
                 listStyle: 'none',
                 fontSize: '1.5rem',
                 lineHeight: '2.5',
+                paddingInline: '0px',
             },
             stepsContainer: {
                 // float: 'left',
@@ -74,7 +75,7 @@ export default function StepsContent(props) {
                  </div>                
             )
         case 2:
-            return (<div>
+            return (<div className="content">
                 <h2>Step 3</h2>
                 </div>
             )
