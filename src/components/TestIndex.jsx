@@ -95,13 +95,44 @@ export const Select = ({ label, register, options, name, required, ...rest }) =>
    </div>
   );
 
+  export const PercentageInput = ({ control, label, register, name, required, ...rest }) => (
+    <Controller
+    control={control}
+    label={label}
+    name={name}
+    // defaultValue={defaultValue}
+    rules={required}
+    {...rest}
+    render={({ field }) => {
+      // sending integer instead of string.
+      return (
+        <div style={styles.formGroup}>
+        <label style={styles.label}>{label}</label>
+        <NumberFormat
+          style={{ ...styles.input, ...styles.percentage }}
+          size="small"
+          label="percent"
+          // variant="outlined"
+          decimalScale={1}
+          // allowEmptyFormatting={false}
+          control={control}
+          suffix={"%"}
+          // fixedDecimalScale={true}
+          {...field}
+         />
+        </div>
+      );
+    }}
+  />
+  );
+
 export default function TestIndex() {
   const { register, setValue, formState: { errors }, control, handleSubmit, watch } = useForm({
     defaultValues: {
       formItems: [
-        { fullName: "Tom Cruise", birth: "1980-01-01", ssn: "SSN", optional: "", relationship: "Trust", part: 40.0, check: false, },
-        { fullName: "Elon Musk", birth: "1970-01-01", ssn: "SSN", optional: "", relationship: "Trust", part: 20.0, check: true, },
-        { fullName: "Jeff Bezos", birth: "1965-01-01", ssn: "SSN", optional: "", relationship: "Trust", part: 30.0, check: false, },
+        { fullName: "Tom Cruise", birth: "1980-01-01", ssn: "SSN", optional: "", relationship: "Trust", part: "40.0%", check: false, },
+        { fullName: "Elon Musk", birth: "1970-01-01", ssn: "SSN", optional: "", relationship: "Trust", part: "20.0%", check: true, },
+        { fullName: "Jeff Bezos", birth: "1965-01-01", ssn: "SSN", optional: "", relationship: "Trust", part: "30.0%", check: false, },
       ]
     },
     mode: "onChange"
@@ -181,46 +212,10 @@ export default function TestIndex() {
             <Select register={register} name={`formItems[${index}].relationship`}
                     required={{ required: true }} defaultValue={field.relationship}
                     label="Relationship" options={["Trust", "noTrust"]} />              
-              
-              <Controller
-        control={control}
-        name={`formItems[${index}].part`}
-        defaultValue={field.part}
-        rules={{ required: true, min: 0, max: 100  }}
-        render={({ field }) => {
-          // sending integer instead of string.
-          return (
-            <div style={styles.formGroup}>
-            <NumberFormat
-              style={{ ...styles.input, ...styles.percentage }}
-              size="small"
-              label="percent"
-              // variant="outlined"
-              decimalScale={1}
-              // allowEmptyFormatting={false}
-              control={control}
-              suffix={"%"}
-              // fixedDecimalScale={true}
-              {...field}
-              // onChange={(e) => field.onChange(console.log(e.target.value))} 
-                onValueChange={(value) => {
-                  // console.log({...{...`formItems[${index}].part`},...{part: value.value}})
-                  // console.log([...formItems,...(formItems[index]),...{part: value.value}])
-                  field = {...field,...{value:value.value}};
-                  console.log(field);
-                  setValue(`formItems[${index}].part`, value.value);
-                  console.log(value);
-                  console.log(value.value);
-                // const price = currency (getValues("price")).value;
-                // const percent = ((price - value.value) / price) * 100;
-                // setValue('percent', percent);
-              }}
-            />
-            </div>
-          );
-        }}
-      />
-              
+            <PercentageInput  control={control} register={register} name={`formItems[${index}].part`}
+                    required={{ required: true }} defaultValue={field.part}
+                    label="Percentage" />   
+             
               <button type="button" style={styles.remove} onClick={() => remove(index)}>
                 <i class="uil uil-times"></i>
               </button>
@@ -243,7 +238,7 @@ export default function TestIndex() {
           );
         })}
       </div>
-      { addItem && (primaryTotal - 100) && newItem()}
+      { addItem && (primaryTotal - 100) ? newItem() : null }
       <br />
       <TotalPercentage control={control} />
       <br />
