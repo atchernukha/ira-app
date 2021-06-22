@@ -41,7 +41,6 @@ export default function StepsContent(props) {
                 paddingInline: '0px',
             },
             stepsContainer: {
-                // float: 'left',
                 width: '270px',
                 borderRight: '0.1rem #e0e0e0 solid'
             }

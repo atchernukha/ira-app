@@ -50,41 +50,31 @@ export const Select = ({ label, register, options, name, required, ...rest }) =>
 );
 
 export const PercentageInput = ({ control, label, name, required, ...rest }) => (
-    <Controller
-        control={control}
-        label={label}
-        name={name}
-        // defaultValue={defaultValue}
-        rules={required}
-        {...rest}
-        render={({ field }) => {
-            // sending integer instead of string.
-            return (
-                <div style={styles.formGroup}>
-                    <label style={styles.label}>{label}</label>
-                    <NumberFormat
-                        style={{ ...styles.input, ...styles.percentage }}
-                        size="small"
-                        label="percent"
-                        // variant="outlined"
-                        decimalScale={1}
-                        // allowEmptyFormatting={false}
-                        onValueChange={values => {
-                            // setValue(field, parseInt(values.floatValue));
-                            console.log({
-                             target: {
-                              value: values.floatValue,
-                             },
-                            });
-                           }}
-                        control={control}
-                        suffix={"%"}
-                        // fixedDecimalScale={true}
-                        onChange={() => console.log(field.value)}
-                        {...field}
-                    />
-                </div>
-            );
-        }}
-    />
-);
+        <Controller
+            control={control}
+            label={label}
+            name={name}
+            rules={required}
+            {...rest}
+            render={({ field }) => {
+                // sending integer instead of string.
+                return (
+                    // <button onClick={() => field.onChange("15")}>On Change</button>
+                    <div style={styles.formGroup}>
+                        <label style={styles.label}>{label}</label>
+                        <NumberFormat
+                            defaultValue={rest.defaultValue}
+                            decimalScale={1}
+                            style={{ ...styles.input, ...styles.percentage }}
+                            suffix={"%"}
+                            onValueChange={(values) => {
+                                console.log(field);
+                                return field.onChange(values.floatValue);
+                            }}                            
+                            // {...field}
+                        />
+                    </div>
+                );
+            }}
+        />
+    );
