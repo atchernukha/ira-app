@@ -17,7 +17,8 @@
 
 .header {
   height: 80px;
-  margin: auto 10px;
+  padding: 10px;
+  margin: auto 0px;
   grid-area: header;
   display: flex;
   align-items: center;

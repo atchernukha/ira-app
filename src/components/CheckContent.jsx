@@ -1,18 +1,8 @@
-import React, { useState } from 'react'
 import BeneficiariesList from './BaneficiariesList'
 
-export default function CheckContent(props) {
-    const [beneficiaries, setBeneficiaries] = useState([
-        { id: 0, fullName: "Tom Cruise", birth: "1980-01-01", ssn: "SSN", optional: "", relationship: "Trust", part: 40, complited: true },
-        { id: 1, fullName: "Elon Musk", birth: "1970-01-01", ssn: "SSN", optional: "", relationship: "Trust", part: 20, complited: true },
-        { id: 2, fullName: "Jeff Bezos", birth: "1965-01-01", ssn: "SSN", optional: "", relationship: "Trust", part: 30, complited: true }
-    ]);
-    const { nextCheck, onCompleted } = props;
-    // const removeBeneficiary = id =>
-    //     setBeneficiaries(beneficiaries.filter(beneficiary => beneficiary.id !== id));
-    // const addBeneficiary = beneficiary => { console.log("id:" + beneficiary.id) };
+export default function CheckContent({ currentCheck, nextCheck, onCompleted }) {
 
-    switch (props.currentCheck) {
+    switch (currentCheck) {
         case 0:
             return (
                 <div>
