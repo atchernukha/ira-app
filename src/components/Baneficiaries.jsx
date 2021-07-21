@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Input, Select, PercentageInput } from "./Inputs"
 import { useForm, useFieldArray, useWatch, useFormState } from "react-hook-form";
-import './BeneficiaryList.css';
 
 const styles = {
     formItem: {
@@ -29,7 +28,6 @@ const styles = {
 };
 
 const formStyles = {
-    padding: '2em',
     formGroup: {
         display: "flex",
         alignItems: 'flex-end',
@@ -52,7 +50,7 @@ const formStyles = {
 };
 
 
-export default function BeneficiariesList({ nextCheck }) {
+export default function Beneficiaries({ nextCheck }) {
     const { register, formState: { errors }, control, handleSubmit, } = useForm({
         defaultValues: {
             formItems: [
@@ -141,10 +139,12 @@ export default function BeneficiariesList({ nextCheck }) {
                                 }}
                                 defaultValue={field.part}
                                 label="Percentage" />
-                            <button type="button" style={styles.remove} onClick={() => remove(index)}>
+                            <button type="button" style={styles.remove} onClick={() => 
+                                (fields.length > 1) && remove(index) } >
+                                {/* (fields.length > 0) ? remove(index) : onCheck() } > */}
                                 <i class="uil uil-times"></i>
                             </button>
-                            {(fields.length === index + 1) &&
+                            {isValid && (fields.length === index + 1) &&
                                 <button type="button" style={styles.submit} onClick={onCheck}>
                                     <i class="uil uil-check"></i>
                                 </button>

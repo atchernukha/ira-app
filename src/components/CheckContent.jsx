@@ -1,4 +1,4 @@
-import BeneficiariesList from './BaneficiariesList'
+import Beneficiaries from './Baneficiaries'
 
 export default function CheckContent({ currentCheck, nextCheck, onCompleted }) {
 
@@ -25,7 +25,7 @@ export default function CheckContent({ currentCheck, nextCheck, onCompleted }) {
 
         case 3:
             return (<div>
-                <BeneficiariesList nextCheck={nextCheck} />
+                <Beneficiaries nextCheck={nextCheck} />
                 {/* <h2>Step 4</h2>
                 <button className="button" onClick={()=>nextCheck()}>Next</button> */}
             </div>)

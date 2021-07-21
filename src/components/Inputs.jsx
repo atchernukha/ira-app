@@ -68,7 +68,7 @@ export const PercentageInput = ({ control, label, name, required, ...rest }) => 
                             style={{ ...styles.input, ...styles.percentage }}
                             suffix={"%"}
                             onValueChange={(values) => {
-                                console.log(field);
+                                // console.log(field);
                                 return field.onChange(values.floatValue);
                             }}                            
                             // {...field}
