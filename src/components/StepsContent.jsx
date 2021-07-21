@@ -26,7 +26,7 @@ const checkList = [
   ];
   
 
-export default function StepsContent(props) {
+export default function StepsContent({ currentStep, nextStep }) {
 
     const [currentCheck, setcurrentCheck] = useState(() => {
         checkList.forEach(item => item.status = "inactive");
@@ -57,25 +57,40 @@ export default function StepsContent(props) {
             } 
           };
 
-    switch (props.currentStep) {
+    switch (currentStep) {
         case 0:
             return (
                 <div className="content">
                 <Steps stepList={checkList} stepsStyles={checkStyles} step={CheckStep}/> 
+                <div style={{padding: '2em'}} >
                 <CheckContent currentCheck={currentCheck} 
                               nextCheck={nextCheck} 
-                              onCompleted={props.onCompleted}/>                    
+                              onCompleted={nextStep}/>   
+                </div>                 
                 </div>                
             )
         case 1:
             return (
-                 <div className="content">
-                <h2>Step 2</h2>    
+                <div className="content">
+                <div style={{padding: '2em'}} >
+                <h2>Step 2</h2>   
+                <br />
+                <br /> 
+                <br />
+                <button className="button" onClick={()=>nextStep()}>NexStep</button>
+                </div>
                  </div>                
             )
         case 2:
-            return (<div className="content">
+            return (
+                <div className="content">
+                <div style={{padding: '2em'}} >
                 <h2>Step 3</h2>
+                <br />
+                <br />
+                <br />
+                <button className="button" onClick={()=>nextStep()}>NexStep</button>
+                </div>
                 </div>
             )
     }

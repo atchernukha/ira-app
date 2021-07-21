@@ -9,11 +9,8 @@ const styles = {
     stepLabel: {},
 }
 
-export default function CheckStep({stepLabel, status}) {
-    // const stepLabel = props.stepLabel;
-    // const status = props.status;
-
-    return (
+const CheckStep = ({stepLabel, status}) => 
+    (
         <div >
             <li style={{...styles.li,...(status === "current") && {background: '#f3f3f3'}}}>
                 &nbsp;&nbsp;
@@ -23,5 +20,7 @@ export default function CheckStep({stepLabel, status}) {
                 <div style={styles.stepLabel}>{stepLabel}</div>
             </li>
         </div>
-    )
-}
+    );
+
+
+export default CheckStep;
