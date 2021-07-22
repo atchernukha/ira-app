@@ -74,7 +74,7 @@ export default function Beneficiaries({ nextCheck }) {
     }
     const onSubmit = data => {
         console.log(data);
-        // nextCheck();
+        nextCheck();
     }
     const TotalPercentage = ({ control }) => {
         const value = useWatch({
@@ -172,10 +172,10 @@ export default function Beneficiaries({ nextCheck }) {
             </label>
             <br />
             <br />
-            <input className="button" type="submit" disabled={ !(isValid && !(primaryTotal - 100)) } />
+            <input className="button" type="submit"  value="Next" disabled={ !(isValid && !(primaryTotal - 100)) } />
+            {/* <br />
             <br />
-            <br />
-            <button className="button" onClick={() => nextCheck()}>Next</button>
+            <button className="button" onClick={() => nextCheck()}>Next</button> */}
         </form>
     );
 }
